@@ -3,7 +3,6 @@ package CSCI485ClassProject;
 import java.util.HashMap;
 import CSCI485ClassProject.StatusCode;
 import CSCI485ClassProject.models.AttributeType;
-import CSCI485ClassProject.models.IndexType;
 import CSCI485ClassProject.models.TableMetadata;
 
 /**
@@ -84,4 +83,6 @@ public interface TableManager {
    * @return status code
    */
   public StatusCode dropAllTables();
+
+  public TableMetadata getTableMetadata(String tableName);
 }

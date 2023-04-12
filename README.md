@@ -1,6 +1,30 @@
 # Class Project: Part 3
 
-This repo is the base codes of the ClassProject of 2023Spring CSCI485.
+submission from Zhihan Wang 2233534677 zhihanwa@usc.edu
+
+# To run the project
+
+Unzip the zip file to a directory
+
+open the directory with IntelliJ
+
+Run project with the following set up
+
+![image-20230412094615467](assets/image-20230412094615467.png)
+
+Should get the following result
+
+![image-20230412103828427](assets/image-20230412103828427.png)
+
+Query 100 Records without index: 996262 milliseconds
+
+Query 100 Records with non-clustered hash index: 657702 milliseconds
+
+Query 100 Records with non-clustered B+Tree index: 648878 milliseconds
+
+**Note:** numOfRecords is set to 10000 and numOfQueries is set to 100 to expedite the test
+
+/////////////
 
 ## Getting Started
 You need to copy and paste the code of Part 1 and Part 2 to this project. 
@@ -15,6 +39,7 @@ Once finished, you can verify it by running the unit test of Part1/Part2.
     - `models`: package storing some defined representations of models in the database.
     - `test`: package for unit tests
     
+
 ## Codes to implement
 Under `src/CSCI485ClassProject`, there is 1 class to finish:
 - `IndexesImpl`: implementation of an interface class `Indexes`

@@ -19,6 +19,12 @@ import static CSCI485ClassProject.StatusCode.SUCCESS;
  */
 public class Record {
 
+  @Override
+  public boolean equals(Object obj) {
+//    System.out.println("Record.equals");
+    return this.mapAttrNameToValue.equals(((Record) obj).mapAttrNameToValue);
+  }
+
   /**
    * Value represents the valid value stored in the database. It encapsulates the type checking and value getter/setter.
    */
@@ -100,19 +106,6 @@ public class Record {
     mapAttrNameToValue = new HashMap<>();
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Record record = (Record) o;
-    return Objects.equals(mapAttrNameToValue, record.mapAttrNameToValue);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(mapAttrNameToValue);
-  }
-
   public HashMap<String, Value> getMapAttrNameToValue() {
     return mapAttrNameToValue;
   }
@@ -162,6 +155,14 @@ public class Record {
     return SUCCESS;
   }
 
+  public HashMap<String, Object> getMapAttrNameToValueValue() {
+    HashMap<String, Object> mapAttrNameToValueAsObject = new HashMap<>();
+    for (Map.Entry<String, Value> kv : mapAttrNameToValue.entrySet()) {
+      mapAttrNameToValueAsObject.put(kv.getKey(), kv.getValue().getValue());
+    }
+    return mapAttrNameToValueAsObject;
+  }
+
   public Object getValueForGivenAttrName(String attrName) {
     if (mapAttrNameToValue.containsKey(attrName)) {
       return mapAttrNameToValue.get(attrName).getValue();
@@ -174,5 +175,13 @@ public class Record {
       return mapAttrNameToValue.get(attrName).getType();
     }
     return null;
+  }
+
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    for (Map.Entry<String, Value> kv : mapAttrNameToValue.entrySet()) {
+      sb.append(kv.getKey() + " : " + kv.getValue().getValue() + " ");
+    }
+    return sb.toString();
   }
 }
